@@ -64,7 +64,6 @@
     <Content Include="js\todo.js" />
     <Content Include="Scripts\angular.intellisense.js" />
     <Content Include="Scripts\angular.js" />
-    <None Include="Win8-AngularJS_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
