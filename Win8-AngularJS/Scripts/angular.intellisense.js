@@ -16,7 +16,57 @@ angular.Scope.prototype.$watch = function () { };
 angular.Scope.prototype.$id = 1;
 
 intellisense.annotate(angular, {
+    'module': function () {
+        /// <signature>
+        ///   <summary>A global place for creating and registering Angular modules. All modules (angular core or 3rd party) that should be available to an application must be registered using this mechanism.</summary>
+        ///   <param name="name" type="String">The name of the module to create or retrieve.</param>
+        ///   <param name="requires" type="Array">(optional)If specified then new module is being created. If unspecified then the the module is being retrieved for further configuration.</param>
+        ///   <param name="configFn" type="Function">(optional)A Configuration function for the module.</param>
+        ///   <returns>The result of evaluating the expression.</returns>
+        /// </signature>
+    },
 });
+
+var moduleObj = angular.module;
+angular.module = function (name, requires, configFn) {
+    var retval = moduleObj(name, requires, configFn);
+    intellisense.annotate(retval, {
+        'controller': function () {
+            /// <signature>
+            ///   <summary>Creates a new controller.</summary>
+            ///   <param name="name" type="String">The name of the controller to create.</param>
+            ///   <param name="constructor" type="Function">The controller constructor function.</param>
+            ///   <returns>The result of evaluating the expression.</returns>
+            /// </signature>
+        },
+        'directive': function () {
+            /// <signature>
+            ///   <summary>Creates a new directive.</summary>
+            ///   <param name="name" type="String">The name of the directive to create.</param>
+            ///   <param name="constructor" type="Function">The directive constructor function.</param>
+            ///   <returns>The result of evaluating the expression.</returns>
+            /// </signature>
+        },
+        'run': function () {
+            /// <signature>
+            ///   <summary>Registers work which should be performed when the injector is done loading all modules.</summary>
+            ///   <param name="initializationFn" type="Function">Execute this function after injector creation. Useful for application initialization.</param>
+            ///   <returns>The result of evaluating the expression.</returns>
+            /// </signature>
+        },
+        'service': function () {
+            /// <signature>
+            ///   <summary>Creates a new service.</summary>
+            ///   <param name="name" type="String">The name of the service to create.</param>
+            ///   <param name="constructor" type="Function">The service constructor function.</param>
+            ///   <returns>The result of evaluating the expression.</returns>
+            /// </signature>
+        }
+    });
+
+    return retval;
+}
+intellisense.redirectDefinition(angular.module, moduleObj)
 
 intellisense.annotate(angular.Scope.prototype, {
     '$apply': function () {
@@ -112,4 +162,4 @@ intellisense.annotate(angular.Scope.prototype, {
         ///   <returns type="Function">Returns a deregistration function for this listener.</returns>
         /// </signature>
     },
-})
+});
