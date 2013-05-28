@@ -31,12 +31,24 @@ var moduleObj = angular.module;
 angular.module = function (name, requires, configFn) {
     var retval = moduleObj(name, requires, configFn);
     intellisense.annotate(retval, {
+        'config': function () {
+            /// <signature>
+            ///   <summary>Register work which needs to be performed on module loading.</summary>
+            ///   <param name="configFn" type="Function">Execute this function on module load. Useful for service configuration.</param>
+            /// </signature>
+        },
+        'constant': function () {
+            /// <signature>
+            ///   <summary>Creates a new constant.</summary>
+            ///   <param name="name" type="String">The name of the constant to create.</param>
+            ///   <param name="object" type="Object">The value of the constant.</param>
+            /// </signature>
+        },
         'controller': function () {
             /// <signature>
             ///   <summary>Creates a new controller.</summary>
             ///   <param name="name" type="String">The name of the controller to create.</param>
             ///   <param name="constructor" type="Function">The controller constructor function.</param>
-            ///   <returns>The result of evaluating the expression.</returns>
             /// </signature>
         },
         'directive': function () {
@@ -44,14 +56,33 @@ angular.module = function (name, requires, configFn) {
             ///   <summary>Creates a new directive.</summary>
             ///   <param name="name" type="String">The name of the directive to create.</param>
             ///   <param name="constructor" type="Function">The directive constructor function.</param>
-            ///   <returns>The result of evaluating the expression.</returns>
+            /// </signature>
+        },
+        'factory': function () {
+            /// <signature>
+            ///   <summary>Creates a new factory.</summary>
+            ///   <param name="name" type="String">The name of the factory to create.</param>
+            ///   <param name="providerFunction" type="Function">The factory constructor function.</param>
+            /// </signature>
+        },
+        'filter': function () {
+            /// <signature>
+            ///   <summary>Creates a new filter.</summary>
+            ///   <param name="name" type="String">The name of the filter to create.</param>
+            ///   <param name="providerFunction" type="Function">The factory function for creating a new filter.</param>
+            /// </signature>
+        },
+        'provider': function () {
+            /// <signature>
+            ///   <summary>Creates a new provider.</summary>
+            ///   <param name="name" type="String">The name of the provider to create.</param>
+            ///   <param name="providerFunction" type="Function">The provider constructor function.</param>
             /// </signature>
         },
         'run': function () {
             /// <signature>
             ///   <summary>Registers work which should be performed when the injector is done loading all modules.</summary>
             ///   <param name="initializationFn" type="Function">Execute this function after injector creation. Useful for application initialization.</param>
-            ///   <returns>The result of evaluating the expression.</returns>
             /// </signature>
         },
         'service': function () {
@@ -59,7 +90,13 @@ angular.module = function (name, requires, configFn) {
             ///   <summary>Creates a new service.</summary>
             ///   <param name="name" type="String">The name of the service to create.</param>
             ///   <param name="constructor" type="Function">The service constructor function.</param>
-            ///   <returns>The result of evaluating the expression.</returns>
+            /// </signature>
+        },
+        'constant': function () {
+            /// <signature>
+            ///   <summary>Creates a new value.</summary>
+            ///   <param name="name" type="String">The name of the value to create.</param>
+            ///   <param name="object" type="Object">The value of the value.</param>
             /// </signature>
         }
     });
