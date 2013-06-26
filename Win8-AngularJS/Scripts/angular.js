@@ -1847,7 +1847,9 @@
             for (var i = 0, childNodes = element.childNodes; i < childNodes.length; i++) {
                 JQLiteDealoc(childNodes[i]);
             }
-            element.innerHTML = value;
+            MSApp.execUnsafeLocalFunction(function () {
+                element.innerHTML = value;
+            });
         }
     }, function (fn, name) {
         /**
